@@ -1,0 +1,59 @@
+# Requirements for Baseline.ipynb, Poisoned.ipynb, and Distributed.ipynb
+#
+# Quick start:
+#   python -m venv .venv
+#   source .venv/bin/activate          # Windows: .venv\Scripts\activate
+#   pip install -r requirements.txt
+#   python -m ipykernel install --user --name=fl-poisoning --display-name="FL Poisoning"
+#   jupyter lab                         # or: jupyter notebook
+#
+# Then in the notebook UI: Kernel -> Change kernel -> "FL Poisoning"
+#
+# ============ PYTORCH INSTALLATION BY ARCHITECTURE ============
+# The notebooks support M2 Mac (ARM64) and AMD (x86_64) architectures.
+# Install PyTorch BEFORE running pip install -r requirements.txt:
+#
+# M2 Mac (ARM64) - Uses Metal Performance Shaders (MPS):
+#   pip install torch torchvision --no-cache-dir
+#   (Apple Silicon wheels are in standard PyPI)
+#
+# AMD/x86_64 Linux with NVIDIA GPU (CUDA 12.1):
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+#
+# AMD/x86_64 without GPU (CPU only):
+#   pip install torch torchvision
+#
+# Windows (CPU or AMD):
+#   pip install torch torchvision
+#
+# Then install the rest of this file:
+#   pip install -r requirements.txt
+#
+# To switch architectures, change DEVICE_TYPE in the first cell of each notebook:
+#   DEVICE_TYPE = 'mps'   # M2 Mac
+#   DEVICE_TYPE = 'cuda'  # AMD with NVIDIA GPU
+#   DEVICE_TYPE = 'cpu'   # CPU-only fallback
+#
+# Verify GPU availability after install:
+#   python -c "import torch; print('CUDA:', torch.cuda.is_available()); print('MPS:', torch.backends.mps.is_available())"
+# ================================================================
+
+# Core ML
+torch>=2.0
+torchvision>=0.15
+
+# Numerical / plotting
+numpy>=1.24,<2.0
+matplotlib>=3.7
+
+# Progress bars (tqdm.notebook needs ipywidgets)
+tqdm>=4.64
+ipywidgets>=8.0
+
+# Image handling for torchvision.datasets.ImageFolder
+Pillow>=9.0
+
+# Jupyter runtime
+jupyterlab>=4.0
+ipykernel>=6.20
+notebook>=7.0
