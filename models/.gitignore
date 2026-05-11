@@ -1,0 +1,4 @@
+# Ignore all model files
+*
+!.gitkeep
+!.gitignore
